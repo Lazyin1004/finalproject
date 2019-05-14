@@ -1,0 +1,58 @@
+#header {
+    background-color: lightgrey;
+    height: 100px;
+    border:1px solid;
+}
+
+#userinfo,
+#cheat,
+#qna {
+    text-align: center;
+    border: 1px;
+    border-bottom-color: black;
+    float: left;
+    margin:10px;
+}
+
+#user1 {
+    float: right;
+    margin-bottom: 5px;
+    margin:5px;
+}
+
+#user2 {
+    float: right;
+    margin-bottom: 5px;
+    margin:5px;
+}
+#login{
+    float:right;
+    margin-bottom: 5px;
+    margin:5px;
+}
+
+#menu {
+    background-color: #339999;
+    color: white;
+    height: 80px;
+}
+
+#userinfo {
+    background-color: #339999;
+    color: white;
+    height: 30px;
+    margin-left: 60px;
+}
+
+#section {
+    width: 200px;
+    text-align: left;
+    height: 800px;
+    padding: 10px;
+}
+
+#footer {
+    background-color: #FFCC00;
+    height: 100px;
+    clear: both;
+}
