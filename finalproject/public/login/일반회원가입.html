@@ -15,7 +15,7 @@
     <div id="header">
         <h2>header</h2>
         <div id="user1">일반회원가입</div>
-        <div id="user2"><a href="강사회원가입.html">강사회원가입|</div>
+        <div id="user2"><a href="../login/강사회원가입.html">강사회원가입|</div>
         <div id="login"><a href="../login/login.html">로그인|</a></div>
     </div>
 
@@ -34,13 +34,13 @@
 
     <div id="section">
         <h2>section</h2>
-        <form>
+        <form method="post" action="/public/login/일반회원가입">
             <input type="text" id="id" name="id" placeholder="아이디"><br>
             <input type="password" id="pw1" name="pw1" placeholder="비밀번호"><br>
             <input type="password" id="pw2" name="pw2" placeholder="비밀번호 확인"><br>
             <input type="text" id="user" name="userName" placeholder="이름을 입력하세요."><br>
             <input type="text" id="phoneNumber" name="Phone" placeholder="연락처"><br>
-            <button>입력</button>
+            <button type="submit" value="전송" name="">입력</button>
         </form>
 
     </div>
