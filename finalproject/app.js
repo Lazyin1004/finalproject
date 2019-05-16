@@ -16,22 +16,22 @@ app.use('/',router);
 
 
 router.route('/mian').post(function(req,res){
-    console.log('/main.html 처리함');
+   
     
 });
 
 router.route('/login/강사회원가입').post(function(req,res){
-    console.log('/main.html 처리함');
+    
     
 });
 
 router.route('/login/일반회원가입').post(function(req,res){
-    console.log('/main.html 처리함');
+    
     
 });
 
 router.route('/login/login').post(function(req,res){
-    console.log('/main.html 처리함');
+   
     
 });
 
