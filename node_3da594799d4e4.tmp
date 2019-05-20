@@ -15,7 +15,7 @@ app.use(static(path.join(__dirname,"public")));
 app.use('/',router);
 
 
-router.route('/mian').post(function(req,res){
+router.route('/main').post(function(req,res){
    
     
 });
@@ -25,18 +25,9 @@ router.route('/login/강사회원가입').post(function(req,res){
     
 });
 
-router.route('/login/일반회원가입').post(function(req,res){
-    console.log('일반회원 가입진행함')
-    
+app.get('/login/일반회원가입',function(req,res){
+    console.log("회원가입")
 });
-
-router.route('/login/login').post(function(req,res){
-   
-    
-});
-
-
-
 
 app.set('port',process.env.PORT || 3000);
 http.createServer(app).listen(app.get('port'),function(){
