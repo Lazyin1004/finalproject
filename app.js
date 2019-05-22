@@ -1,11 +1,14 @@
+//counter
+
 const express = require('express');
 const path = require('path')
 const app = express();
-var mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 
 
-mongoose.connect(process.evn.MONGO_DB)
+mongoose.connect("mongodb://lazyin1004:123456@mongodb-2628-0.cloudclusters.net:10003/test?authSource=admin")
 var db = mongoose.connection
 db.once("open", function () {
     console.log("DB connected:")
@@ -32,7 +35,7 @@ Data.findOne({ name: "myData" }, function (err, data) {
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
     Data.findOne({ name: "myData" }, function (err, data) {
