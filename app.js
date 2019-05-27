@@ -1,91 +1,24 @@
-//counter
-
+//모듈 불러오기 
 const express = require('express');
 const path = require('path')
 const app = express();
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const servestatic= require('serve-static');
+const cookieParser = require('cookie-parser');
+const errorHandler = require('errorhandler')
 
-
-
-mongoose.connect("mongodb://lazyin1004:123456@mongodb-2628-0.cloudclusters.net:10003/test?authSource=admin")
-var db = mongoose.connection
-db.once("open", function () {
-    console.log("DB connected:")
-});
-db.on("error", function (err) {
-    console.log("DB ERROR:", err);
-});
-
-var dataSchema = mongoose.Schema({
-    name: String,
-    count: Number,
-});
-
-var Data = mongoose.model('data', dataSchema);
-Data.findOne({ name: "myData" }, function (err, data) {
-    if (err) return console.log("Data ERROR:", err);
-    if (!err) {
-        Data.create({ name: "myData", count: 0 }, function (err, data) {
-            if (err) return console.log("Data ERROR:", err);
-            console.log("Counter initialized:", data);
-        });
-    }
-});
-
-app.set('view engine', 'ejs');
+//익스프레스 객체 생성
+//middleware 세팅
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
-
-app.get('/', function (req, res) {
-    Data.findOne({ name: "myData" }, function (err, data) {
-        if (err) return console.log("Data ERROR:", err);
-        data.count++;
-        data.save(function (err) {
-            if (err) return console.log("Data ERROR :", err);
-            res.render('my_first_ejs', data)
-        })
-    })
-});
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.get('/reset', function (req, res) {
-    setCounter(res, 0)
-})
-
-app.get('/set/count', function (req, res) {
-    if (req.query.count) setCounter(res,req.query.count)
-    else getCounter(res)
-})
-
-app.get('/set/:num', function (req, res) {
-    if(req.params.num) setCounter(res,req.params.num);
-    else getCounter(res);
-})
 
 
-function setCounter(res, num) {
-    console.log("setCounter")
-    Data.findOne({ name: "myData" }, function (err, data) {
-        if (err) return console.log("Data ERROR:", err);
-        data.count = num;
-        data.save(function (err) {
-            if (err) return console.log("Data ERROR :", err);
-            res.render('my_first_ejs', data)
-        });
-    });
-}
-
-function getCounter(res) {
-    console.log("getCounter")
-    Data.findOne({ name: "myData" }, function (err, data) {
-        if (err) return console.log("Data ERROR:", err);
-        res.render('my_first_ejs', data)
-    });
-}
 
 
+// start server
 app.listen(3000, function () {
-    console.log('server on!')
+  console.log('Server On!');
 });
-
